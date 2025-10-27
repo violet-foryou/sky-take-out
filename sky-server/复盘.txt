@@ -5,5 +5,12 @@ day 1 增加员工
 知识点：
 使用线程来记录修改者和创建者的id
 用户名重复时的sql异常处理
+
+
 day 2 分页查询
 1.query格式（紧跟在URL的 ? 后面，常用于get，用@RequestParam，只有一个对象接收时可以不用）和json格式（通常在HTTP请求的请求体 中，用@RequestBody，用于Post，PUT、PATCH）
+2.log.info("进行分页查询，参数为{}",employeePageQueryDTO);,使用{}
+3.converters.add(0,Converter);记得要写0，把新增转换器放在第一个
+4.来自源根的路径：相对于classpath根目录，配置文件中应该使用的路径，比如配置文件中指明xml文件的路径，mapper-locations: classpath:mapper/*.xml
+
+day 2 启用禁用员工账号

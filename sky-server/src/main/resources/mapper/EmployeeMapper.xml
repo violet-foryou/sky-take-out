@@ -2,4 +2,15 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.sky.mapper.EmployeeMapper">
+    <select id="pagequery" resultType="com.sky.entity.Employee">
+        select * from employee
+        <where>
+            <if test="name!=null and name!=''">
+                name like concat('%',#{name},'%')
+                <!-- <if test="name != null and name != ''">
+                           and name like '%#{name}%'
+                       </if>编译后变成and name like '%?%'，？在引号中间，会变成字符串，无法填入正确值-->
+            </if>
+        </where>
+    </select>
 </mapper>
