@@ -119,4 +119,23 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
+    @Override
+    public Employee getbyid(Long id) {
+        return employeeMapper.getbyid(id);
+    }
+
+    @Override
+    public void update(EmployeeDTO employeeDTO) {
+        Employee employee=new Employee();
+        BeanUtils.copyProperties(employeeDTO,employee);
+        // 更新时必须带上 id，用于 WHERE id = #{id}
+        if (employee.getId() == null) {
+            throw new IllegalArgumentException("更新员工时 id 不能为空");
+        }
+        Long currentId = BaseContext.getCurrentId();
+        employee.setUpdateTime(LocalDateTime.now());
+        employee.setUpdateUser(currentId);
+        employeeMapper.empchange(employee);
+    }
+
 }

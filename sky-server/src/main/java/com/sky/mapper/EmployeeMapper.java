@@ -37,4 +37,7 @@ public interface EmployeeMapper {
     List<Employee> pagequery(@Param("name") String name);
 
     void empchange(Employee employee);
+
+    @Select("select * from employee where id=#{id}")
+    Employee getbyid(Long id);
 }

@@ -2,9 +2,9 @@ day 1 增加员工
 问题：
 首先是controller，service，和mapper之间的参数传递没弄清，没搞清改传递什么参数和返回什么参数
 功能测试时令牌添加错误（全局参数）
-知识点：
-使用线程来记录修改者和创建者的id
-用户名重复时的sql异常处理
+注意：
+1.使用线程来记录修改者和创建者的id
+2.用户名重复时的sql异常处理
 
 
 day 2 分页查询
@@ -12,5 +12,14 @@ day 2 分页查询
 2.log.info("进行分页查询，参数为{}",employeePageQueryDTO);,使用{}
 3.converters.add(0,Converter);记得要写0，把新增转换器放在第一个
 4.来自源根的路径：相对于classpath根目录，配置文件中应该使用的路径，比如配置文件中指明xml文件的路径，mapper-locations: classpath:mapper/*.xml
+注意：
+时间的格式要在配置文件中写明
 
 day 2 启用禁用员工账号
+1.<if test="name != null and name != ''">XML 属性值本身通常用双引号包裹，如果在属性值内部再使用双引号，会导致 XML 解析错误，所以这里用单引号
+2.name != null and name != '' 这个条件的意思是："只有当name参数被传递且传递的值不是空字符串时，才添加这个查询条件（null和''的区别）
+null → "没有参数" 或 "参数未传递"
+'' → "参数传递了，但值是空的"
+
+day 2 编辑员工
+1.每次写前端传来参数时要注意格式是json还是query，记得写@RequestBody
