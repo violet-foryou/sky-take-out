@@ -1,0 +1,9 @@
+day 1 增加员工
+问题：
+首先是controller，service，和mapper之间的参数传递没弄清，没搞清改传递什么参数和返回什么参数
+功能测试时令牌添加错误（全局参数）
+知识点：
+使用线程来记录修改者和创建者的id
+用户名重复时的sql异常处理
+day 2 分页查询
+1.query格式（紧跟在URL的 ? 后面，常用于get，用@RequestParam，只有一个对象接收时可以不用）和json格式（通常在HTTP请求的请求体 中，用@RequestBody，用于Post，PUT、PATCH）
