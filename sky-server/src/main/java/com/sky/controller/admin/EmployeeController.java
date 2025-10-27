@@ -82,12 +82,29 @@ public class EmployeeController {
         return Result.success();
     }
 
+    /**
+     * 进行分页查询
+     * @param employeePageQueryDTO
+     * @return
+     */
     @GetMapping("/page")
     public Result<PageResult> pagequery(EmployeePageQueryDTO employeePageQueryDTO){
         log.info("进行分页查询，参数为{}",employeePageQueryDTO);
         PageResult pageResult=employeeService.pagequery(employeePageQueryDTO);
 
         return Result.success(pageResult);
+    }
+
+    /**
+     * 改变员工启用或者禁用状态
+     * @param status
+     * @param id
+     * @return
+     */
+    @PostMapping("/status/{status}")
+    public  Result StartOrStop(@PathVariable Integer status,Long id){
+        employeeService.empchange(status,id);
+        return Result.success();
     }
 
 

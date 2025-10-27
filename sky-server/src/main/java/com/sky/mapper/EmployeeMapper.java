@@ -3,6 +3,7 @@ package com.sky.mapper;
 import com.sky.entity.Employee;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -33,5 +34,7 @@ public interface EmployeeMapper {
      * @param name
      * @return
      */
-    List<Employee> pagequery(String name);
+    List<Employee> pagequery(@Param("name") String name);
+
+    void empchange(Employee employee);
 }
