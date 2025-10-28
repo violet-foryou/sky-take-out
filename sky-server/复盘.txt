@@ -23,3 +23,17 @@ null → "没有参数" 或 "参数未传递"
 
 day 2 编辑员工
 1.每次写前端传来参数时要注意格式是json还是query，记得写@RequestBody
+
+day 3 公共字段自动填充
+1.自定义注解和枚举的相关知识
+2.反射的知识
+ Method 提供的是静态信息，Method method = signature.getMethod();而不能通过这个method来获得args
+方法名 (getName())
+参数类型 (getParameterTypes())
+返回类型 (getReturnType())
+注解信息 (getAnnotations())
+修饰符 (getModifiers())
+JoinPoint 提供的是运行时动态信息，Object[] args = joinPoint.getArgs();
+实际传入的参数值 (getArgs()) - 这是最重要的区别！
+目标对象实例 (getTarget())
+代理对象实例 (getThis())

@@ -75,11 +75,11 @@ public class EmployeeServiceImpl implements EmployeeService {
         BeanUtils.copyProperties(employeeDTO,employee);
         employee.setStatus(StatusConstant.ENABLE);
         employee.setPassword(DigestUtils.md5DigestAsHex(PasswordConstant.DEFAULT_PASSWORD.getBytes()));
-        employee.setCreateTime(LocalDateTime.now());
-        employee.setUpdateTime(LocalDateTime.now());
-        Long currentId = BaseContext.getCurrentId();
-        employee.setCreateUser(currentId);
-        employee.setUpdateUser(currentId);
+//        employee.setCreateTime(LocalDateTime.now());
+//        employee.setUpdateTime(LocalDateTime.now());
+//        Long currentId = BaseContext.getCurrentId();
+//        employee.setCreateUser(currentId);
+//        employee.setUpdateUser(currentId);
         employeeMapper.addnew(employee);
     }
 
@@ -105,7 +105,7 @@ public class EmployeeServiceImpl implements EmployeeService {
     }
 
     /**
-     * 变更员工信息
+     * 变更员工状态
      * @param status
      * @param id
      */
@@ -119,22 +119,27 @@ public class EmployeeServiceImpl implements EmployeeService {
 
     }
 
+    /**
+     * 根据id查询信息
+     * @param id
+     * @return
+     */
     @Override
     public Employee getbyid(Long id) {
         return employeeMapper.getbyid(id);
     }
 
+    /**
+     * 更新员工信息
+     * @param employeeDTO
+     */
     @Override
     public void update(EmployeeDTO employeeDTO) {
         Employee employee=new Employee();
         BeanUtils.copyProperties(employeeDTO,employee);
-        // 更新时必须带上 id，用于 WHERE id = #{id}
-        if (employee.getId() == null) {
-            throw new IllegalArgumentException("更新员工时 id 不能为空");
-        }
-        Long currentId = BaseContext.getCurrentId();
-        employee.setUpdateTime(LocalDateTime.now());
-        employee.setUpdateUser(currentId);
+//        Long currentId = BaseContext.getCurrentId();
+//        employee.setUpdateTime(LocalDateTime.now());
+//        employee.setUpdateUser(currentId);
         employeeMapper.empchange(employee);
     }
 
